@@ -18,8 +18,8 @@ public class CompraController {
     public ResponseEntity<?> saveCompra(@RequestBody Compra compra)
     {
         // Calcula el total multiplicando precio por cantidad
-        double total = compra.getPrecio() * compra.getCantidad();
-        compra.setPrecio(total);
+        double total = compra.getPrecioCompra() * compra.getCantidad();
+        compra.setPrecioCompra(total);
 
         Compra nuevaCompra = compraService.saveCompra(compra);
         return ResponseEntity.ok(nuevaCompra);
@@ -32,5 +32,18 @@ public class CompraController {
         return ResponseEntity.ok(compraService.findAllComprasOfUser(userId));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateCompra(@PathVariable Long id, @RequestBody Compra compra) {
+        try {
+            Compra updatedCompra = compraService.updateCompra(id, compra);
+            if (updatedCompra != null) {
+                return ResponseEntity.ok(updatedCompra);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al actualizar la compra: " + e.getMessage());
+        }
+    }
 
 }

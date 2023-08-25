@@ -8,4 +8,7 @@ public interface CompraService {
     Compra saveCompra(Compra compra);
 
     List<Compra> findAllComprasOfUser(Long userId);
+
+
+    Compra updateCompra(Long id, Compra compra);
 }

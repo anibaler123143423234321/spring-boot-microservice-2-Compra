@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompraServiceImpl implements CompraService {
@@ -28,4 +29,19 @@ public class CompraServiceImpl implements CompraService {
 
         return compraRepository.findAllByUserId(userId);
     }
+
+
+    @Override
+    public Compra updateCompra(Long id, Compra compra) {
+        Optional<Compra> existingCompra = compraRepository.findById(id);
+
+        if (existingCompra.isPresent()) {
+            Compra updatedCompra = existingCompra.get();
+            updatedCompra.setEstadoCompra(compra.getEstadoCompra());
+            return compraRepository.save(updatedCompra);
+        } else {
+            return null; // La compra no existe
+        }
+    }
+
 }

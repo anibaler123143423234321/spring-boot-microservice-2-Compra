@@ -23,12 +23,16 @@ public class Compra {
     private String titulo;
 
     @Column(name = "precio", nullable = false)
-    private Double precio;
+    private Double precioCompra;
 
     @Column(name = "fecha_compra", nullable = false)
     private LocalDateTime fechaCompra;
 
     @Column(name = "cantidad", nullable = false)
     private Integer cantidad;
+
+    // Agrega el campo estadoCompra y establece su valor por defecto
+    @Column(name = "estado_compra", nullable = false)
+    private String estadoCompra = "Pendiente Por Revisar";
 
 }
