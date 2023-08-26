@@ -44,4 +44,9 @@ public class CompraServiceImpl implements CompraService {
         }
     }
 
+    @Override
+    public List<Compra> findAllCompras() {
+        return compraRepository.findAll();
+    }
+
 }

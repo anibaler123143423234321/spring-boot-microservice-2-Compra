@@ -11,4 +11,9 @@ public interface CompraService {
 
 
     Compra updateCompra(Long id, Compra compra);
+
+
+    // Nuevo método para listar todas las compras
+    List<Compra> findAllCompras();
+
 }

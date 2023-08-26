@@ -46,4 +46,9 @@ public class CompraController {
         }
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllCompras() {
+        return ResponseEntity.ok(compraService.findAllCompras());
+    }
+
 }
