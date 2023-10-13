@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Entity
@@ -35,4 +36,28 @@ public class Compra {
     @Column(name = "estado_compra", nullable = false)
     private String estadoCompra = "Pendiente Por Revisar";
 
+    @Column(name = "tipoEnvio", nullable = false)
+    private String tipoEnvio;
+
+    @Column(name = "tipoDePago", nullable = false)
+    private String tipoDePago;
+
+    @Column(name = "codigo", nullable = false, unique = true, length = 8)
+    private String codigo;
+
+
+    public Compra() {
+        this.codigo = generarCodigo();
+    }
+
+    private String generarCodigo() {
+        // Genera un identificador único (UUID)
+        UUID uuid = UUID.randomUUID();
+
+        // Convierte el UUID a su representación hexadecimal
+        String hexadecimal = uuid.toString().replace("-", "");
+
+        // Toma los primeros 8 caracteres del identificador hexadecimal
+        return hexadecimal.substring(0, 8);
+    }
 }
