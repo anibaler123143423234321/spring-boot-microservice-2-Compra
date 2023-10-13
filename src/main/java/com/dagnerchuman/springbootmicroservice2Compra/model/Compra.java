@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Data
@@ -39,8 +40,9 @@ public class Compra {
     @Column(name = "tipoEnvio", nullable = false)
     private String tipoEnvio;
 
-    @Column(name = "tipoDePago", nullable = false)
-    private String tipoDePago;
+
+    @Column(name = "TipoDePago", nullable = false)
+    private String TipoDePago;
 
     @Column(name = "codigo", nullable = false, unique = true, length = 8)
     private String codigo;
@@ -60,4 +62,5 @@ public class Compra {
         // Toma los primeros 8 caracteres del identificador hexadecimal
         return hexadecimal.substring(0, 8);
     }
+
 }
