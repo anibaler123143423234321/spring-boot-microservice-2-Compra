@@ -33,20 +33,17 @@ public class Compra {
     @Column(name = "cantidad", nullable = false)
     private Integer cantidad;
 
-    // Agrega el campo estadoCompra y establece su valor por defecto
     @Column(name = "estado_compra", nullable = false)
     private String estadoCompra = "Pendiente Por Revisar";
 
     @Column(name = "tipoEnvio", nullable = false)
     private String tipoEnvio;
 
-
     @Column(name = "TipoDePago", nullable = false)
     private String TipoDePago;
 
     @Column(name = "codigo", nullable = false, unique = true, length = 8)
     private String codigo;
-
 
     public Compra() {
         this.codigo = generarCodigo();
